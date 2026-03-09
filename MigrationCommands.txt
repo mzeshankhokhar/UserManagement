@@ -1,0 +1,10 @@
+dotnet tool install --global dotnet-ef --version 8.0.5
+dotnet tool update -g dotnet-ef --version 8.0.5 --allow-downgrade
+
+
+cd /d D:\Projects\UserManagement\UserManagement.Repository
+dotnet ef migrations remove --startup-project ..\UserManagement.API\UserManagement.API.csproj
+
+dotnet ef migrations add stampUpdate --startup-project ..\UserManagement.API\UserManagement.API.csproj
+
+dotnet ef database update --startup-project ..\UserManagement.API\UserManagement.API.csproj
