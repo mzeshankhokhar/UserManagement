@@ -102,6 +102,8 @@ namespace UserManagement.API.Controllers
                 return CreateActionResult(CustomResponseDto<string>.Fail(404, "User not found"));
             }
 
+            var roles = await _userManager.GetRolesAsync(user);
+
             var profile = new UserProfileResponseDto
             {
                 Id = user.Id,
@@ -114,7 +116,8 @@ namespace UserManagement.API.Controllers
                 IsEmailConfirmed = user.IsEmailConfirmed,
                 DateOfBirth = user.DateOfBirth,
                 CreatedDate = user.CreatedDate,
-                UpdatedDate = user.UpdatedDate
+                UpdatedDate = user.UpdatedDate,
+                Roles = roles.ToList()
             };
 
             return CreateActionResult(CustomResponseDto<UserProfileResponseDto>.Success(200, profile));

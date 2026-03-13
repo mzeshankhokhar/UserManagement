@@ -86,4 +86,5 @@ public class UserProfileResponseDto
     public DateTime? DateOfBirth { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime? UpdatedDate { get; set; }
+    public List<string> Roles { get; set; } = new List<string>();
 }
